@@ -16,9 +16,9 @@ Future<BenchmarkResult> extractStatsFromFlutterTimeline(
 
   for (final event in events.where((e) => e.name == 'thread_name')) {
     final name = event.arguments!['name'] as String;
-    if (name.startsWith('1.ui')) {
+    if (name.contains('1.ui')) {
       uiThreadId = event.threadId!;
-    } else if (name.startsWith('1.raster')) {
+    } else if (name.contains('1.raster')) {
       rasterThreadId = event.threadId!;
     }
   }
